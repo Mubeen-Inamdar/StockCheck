@@ -41,12 +41,12 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "PhantomInstaller\\Installer::installPhantomJS",
+            //"PhantomInstaller\\Installer::installPhantomJS",
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
         "post-update-cmd": [
-            "PhantomInstaller\\Installer::installPhantomJS",
+            //"PhantomInstaller\\Installer::installPhantomJS",
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
         ]
