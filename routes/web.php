@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home.index');
+
+Route::get('product/create', 'ProductController@create')->name('product.create');
+Route::post('product', 'ProductController@store')->name('product.store');
+Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
+
+Route::group(['prefix' => 'json'], function () {
+    Route::post('sizes', 'JSONController@sizes')->name('json.sizes');
 });
