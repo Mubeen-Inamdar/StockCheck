@@ -53,10 +53,10 @@ class CheckStock extends Command
 
             if ($stock['inStock']->contains($product->size)) {
                 $product->sent_at = Carbon::now()->toDateTimeString();
-                $product->save();
-
                 Mail::to($product->user->email)->queue(new InStock($product));
             }
+
+            $product->save();
         });
     }
 }
