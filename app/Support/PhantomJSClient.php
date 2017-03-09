@@ -15,7 +15,7 @@ class PhantomJSClient
     public static function getDOMString(String $url)
     {
         $client = Client::getInstance();
-        $client->getEngine()->setPath(base_path('/node_modules/phantomjs/bin/phantomjs'));
+        $client->getEngine()->setPath(base_path('node_modules/phantomjs/bin/phantomjs'));
 
         $request  = $client->getMessageFactory()->createRequest($url, 'GET');
         $response = $client->getMessageFactory()->createResponse();
