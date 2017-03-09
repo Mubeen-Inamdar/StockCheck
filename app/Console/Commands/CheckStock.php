@@ -49,6 +49,8 @@ class CheckStock extends Command
             $dom   = PhantomJSClient::getDOMString($product->url);
             $stock = DOMParser::asos($dom);
 
+            $product->image = $stock['image'];
+
             if ($stock['inStock']->contains($product->size)) {
                 $product->sent_at = Carbon::now()->toDateTimeString();
                 $product->save();

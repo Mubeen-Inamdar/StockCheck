@@ -36,10 +36,15 @@ class DOMParser
             }
         });
 
+        $image = getStringBetween($dom, '<img data-bind="attr: { src: $parent.colourOptionImage().url + \'?$S$&amp;wid=40&amp;fit=constrain\' }" src="', '">');
+        $image = explode('?', $image);
+        $image = $image[0];
+
         return [
             'allStock'   => $allStock,
             'inStock'    => $inStock,
             'outOfStock' => $outOfStock,
+            'image'      => $image,
         ];
     }
 }

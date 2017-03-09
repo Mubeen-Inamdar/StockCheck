@@ -12,7 +12,7 @@
                 @foreach($products as $product)
                     <li class="list-group-item clearfix">
                         <div class="col-md-1">
-                            <img class="img-responsive img-circle center-block" src="https://pbs.twimg.com/profile_images/794168141563777024/ccpIqz98.jpg">
+                            <product-image src="{{ $product->image ? $product->image : 'https://pbs.twimg.com/profile_images/794168141563777024/ccpIqz98.jpg' }}"></product-image>
                         </div>
 
                         <div class="col-md-9">
