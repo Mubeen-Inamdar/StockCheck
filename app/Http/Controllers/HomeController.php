@@ -22,9 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['products'] = Product::orderBy('created_at', 'DESC')->get();
+        $data['products'] = $request->user()->products()->orderBy('created_at', 'DESC')->get();
 
         return view('home', $data);
     }
