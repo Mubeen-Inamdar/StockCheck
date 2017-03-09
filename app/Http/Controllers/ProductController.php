@@ -42,7 +42,7 @@ class ProductController extends Controller
             'size' => $request->size,
         ]);
 
-        Artisan::queue('stockcheck:checkstock');
+        Artisan::queue("stockcheck:checkstock {$product->id}");
 
         return redirect()->route('home.index');
     }

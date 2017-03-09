@@ -17,7 +17,7 @@ class CheckStock extends Command
      *
      * @var string
      */
-    protected $signature = 'stockcheck:checkstock';
+    protected $signature = 'stockcheck:checkstock {product?}';
 
     /**
      * The console command description.
@@ -43,7 +43,9 @@ class CheckStock extends Command
      */
     public function handle()
     {
-        $products = Product::whereNull('sent_at')->get();
+        $products = $this->argument('product')
+            ? Product::where('id', $this->argument('product'))->get()
+            : Product::whereNull('sent_at')->get();
 
         $products->each(function ($product) {
             $dom   = PhantomJSClient::getDOMString($product->url);
