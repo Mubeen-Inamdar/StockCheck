@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Artisan;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,8 @@ class ProductController extends Controller
             'url'  => $request->url,
             'size' => $request->size,
         ]);
+
+        Artisan::queue('stockcheck:checkstock');
 
         return redirect()->route('home.index');
     }
